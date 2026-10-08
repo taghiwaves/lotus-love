@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>love u ♡</title>
+  <meta name="description" content="a small message of love ♡">
+  <meta name="theme-color" content="#070713">
+  <meta property="og:title" content="love u ♡">
+  <meta property="og:description" content="a small message of love ♡">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/lotus-pixel.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%B7%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add("js");</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
@@ -15,13 +23,13 @@
       <div class="word word-left">love u<span>♡</span></div>
       <div class="word word-right">there for you<span>♡</span></div>
 
-      <div class="sybau sybau-1">sybau</div>
-      <div class="sybau sybau-2">sybau</div>
-      <div class="sybau sybau-3">sybau</div>
+      <div class="sybau sybau-1" aria-hidden="true">sybau</div>
+      <div class="sybau sybau-2" aria-hidden="true">sybau</div>
+      <div class="sybau sybau-3" aria-hidden="true">sybau</div>
 
       <div class="lotus-wrap">
         <div class="glow"></div>
-        <img src="assets/lotus-pixel.png" alt="Pixel art lotus flower" class="lotus">
+        <img src="assets/lotus-pixel.png" alt="Pixel art lotus flower" class="lotus" decoding="async">
       </div>
 
       <div class="sparkles" aria-hidden="true">
@@ -31,8 +39,8 @@
 
     <section class="memory">
       <div class="memory-line"></div>
-      <img src="assets/couple-pixel.png" alt="Pixel art portrait of the couple" class="couple">
-      <p class="tiny">♡</p>
+      <img src="assets/couple-pixel.png" alt="Pixel art portrait of the couple" class="couple" loading="lazy" decoding="async">
+      <p class="tiny" aria-hidden="true">♡</p>
     </section>
   </main>
   <script src="script.js"></script>
