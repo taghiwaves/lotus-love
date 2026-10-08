@@ -1,7 +1,7 @@
 const stories = [
   {
-    title: "Just the two of us",
-    text: "Some pictures need no words. Just the two of us, together, sharing that serene feeling of being exactly where one wants to be. When I think of moments like these, I realize once again how wonderful it is to have you by my side."
+    title: "My favorite photo of us",
+    text: "My favorite picture of us. It is enough to bring tears to my eyes. I am still shocked by how perfectly we look together. If I were born again, I would still want to be with you. No one in this world looks as perfect together as we do."
   },
   {
     title: "These looks",
@@ -16,8 +16,8 @@ const stories = [
     text: "And maybe this is my favorite thought of all: not every beautiful moment has to be something big. You sitting on a bench, a quiet afternoon, food in your hands, and simply us. I promised I would come to Korea. I couldn't make it, and the reason isn't a breakup or the distance, like you might have thought."
   },
   {
-    title: "My favorite photo of us",
-    text: "My favorite picture of us. It is enough to bring tears to my eyes. I am still shocked by how perfectly we look together. If I were born again, I would still want to be with you. No one in this world looks as perfect together as we do."
+    title: "Just the two of us",
+    text: "Some pictures need no words. Just the two of us, together, sharing that serene feeling of being exactly where one wants to be. When I think of moments like these, I realize once again how wonderful it is to have you by my side."
   }
 ];
 
