@@ -1,4 +1,4 @@
-// The page uses CSS for the subtle lotus glow, sparkles and "sybau" flicker.
+// Small, gentle entrance state. The visual effects themselves stay CSS-only.
 window.addEventListener("load", () => {
   document.body.classList.add("ready");
 });
