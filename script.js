@@ -1,5 +1,9 @@
 const stories = [
   {
+    title: "Ein Abend nur für uns",
+    text: "Manche Bilder brauchen gar nicht viele Worte. Einfach wir beide, zusammen, mit diesem ruhigen Gefühl, dass man gerade genau dort sein möchte. Wenn ich an solche Momente denke, denke ich daran, wie schön es ist, dich an meiner Seite zu haben."
+  },
+  {
     title: "Ein kleiner süßer Moment",
     text: "Manchmal sind es genau die kleinen Dinge, die man später am liebsten wieder hervorholt. Dein Lächeln, dieser Lebkuchen und dieser ganz normale Moment — und trotzdem ist er für mich etwas Besonderes. Ich mag diese kleinen Erinnerungen an uns, weil sie sich nach Zuhause anfühlen."
   },
