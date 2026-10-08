@@ -38,7 +38,7 @@ body {
 
 .lotus-wrap {
   position: relative;
-  width: min(430px, 76vw);
+  width: min(560px, 88vw);
   z-index: 2;
   filter: drop-shadow(0 0 18px rgba(255, 91, 142, .25));
 }
@@ -149,7 +149,7 @@ body {
   .hero { min-height: 70vh; padding-top: 5rem; }
   .word-left { left: 7%; top: 31%; }
   .word-right { right: 5%; top: 58%; }
-  .lotus-wrap { width: 92vw; }
+  .lotus-wrap { width: 96vw; }
   .memory { min-height: 30vh; }
   .couple { width: 96vw; }
 }
