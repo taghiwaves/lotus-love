@@ -1,252 +1,293 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 :root {
-  --pink: #ff9eb4;
-  --cream: #ffd7b7;
-  --night: #080619;
-}
-
-html {
-  scroll-behavior: smooth;
+  --bg: #070713;
+  --pink: #ff91a9;
+  --soft: #ffd0d8;
+  --purple: #272044;
 }
 
 html, body {
   margin: 0;
   min-height: 100%;
-  background: var(--night);
+  background: var(--bg);
 }
 
 body {
-  overflow-x: hidden;
+  color: var(--soft);
   font-family: "Silkscreen", monospace;
-  color: var(--cream);
+  overflow-x: hidden;
 }
 
-.scene {
+.page {
+  min-height: 100vh;
   position: relative;
-  width: 100%;
-  min-height: 100svh;
-  height: 100svh;
   overflow: hidden;
   background:
-    url("assets/night-lotus-background.png")
-    center center / cover no-repeat;
-  isolation: isolate;
+    radial-gradient(circle at 50% 36%, rgba(86, 47, 91, .24), transparent 31rem),
+    linear-gradient(#070713, #090817 72%, #06060f);
 }
 
-/* A subtle dark wash keeps the generated artwork atmospheric and readable. */
-.scene-shade {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(4, 3, 15, .16) 0%,
-      rgba(8, 5, 20, .03) 42%,
-      rgba(5, 3, 16, .20) 100%
-    );
-  pointer-events: none;
+.hero {
+  min-height: 76vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 5rem 1.5rem 2rem;
 }
 
-.vignette {
-  position: absolute;
-  inset: 0;
+.lotus-wrap {
+  position: relative;
+  width: min(610px, 88vw);
   z-index: 2;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at center, transparent 48%, rgba(2, 2, 12, .35) 100%);
+  filter: drop-shadow(0 0 22px rgba(255, 91, 142, .30)) drop-shadow(0 0 55px rgba(103, 57, 116, .16));
 }
 
-/* These are HTML overlays so they stay crisp and controllable. */
-.message {
-  position: absolute;
-  z-index: 5;
-  top: 31%;
-  color: var(--cream);
-  font-size: clamp(.72rem, 1.65vw, 1rem);
-  letter-spacing: .045em;
-  text-shadow:
-    0 0 7px rgba(255, 183, 153, .65),
-    0 0 22px rgba(255, 72, 126, .35);
-  white-space: nowrap;
-  animation: message-breathe 4.8s ease-in-out infinite;
-}
-
-.message span {
+.lotus {
+  width: 100%;
   display: block;
-  margin-top: .35rem;
-  color: var(--pink);
-  font-size: .85rem;
-  text-align: center;
+  image-rendering: pixelated;
+  mix-blend-mode: screen;
 }
 
-.message-left {
-  left: clamp(7%, 14vw, 17%);
-}
-
-.message-right {
-  right: clamp(6%, 13vw, 16%);
-  animation-delay: 1.4s;
-}
-
-/* Hidden little inside joke. Each instance has its own timing. */
-.sybau {
+.glow {
   position: absolute;
-  z-index: 6;
+  inset: 28% 12% 18%;
+  border-radius: 50%;
+  background: rgba(255, 91, 142, .15);
+  filter: blur(38px);
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.word {
+  position: absolute;
+  z-index: 3;
   color: var(--pink);
-  font-size: clamp(.58rem, 1.25vw, .78rem);
-  letter-spacing: .08em;
-  opacity: 0;
-  pointer-events: none;
-  text-shadow:
-    0 0 5px rgba(255, 110, 150, .65),
-    0 0 18px rgba(255, 65, 130, .42);
-  animation: sybau-flicker 11s infinite;
+  font-size: clamp(.72rem, 1.7vw, .95rem);
+  letter-spacing: .04em;
+  text-shadow: 0 0 12px rgba(255, 111, 150, .35);
+  white-space: nowrap;
 }
 
-.sybau-1 {
-  left: 43%;
-  top: 14%;
-  animation-delay: 1.8s;
-  transform: rotate(-6deg);
+.word span {
+  display: block;
+  margin-top: .45rem;
+  font-size: .8rem;
 }
 
-.sybau-2 {
-  right: 11%;
-  top: 27%;
-  animation-delay: 5.1s;
-  transform: rotate(-5deg);
+.word-left {
+  left: clamp(5%, 11vw, 15%);
+  top: 38%;
+  transform: rotate(-3deg);
 }
 
-.sybau-3 {
-  left: 17%;
-  top: 58%;
-  animation-delay: 8.3s;
-  transform: rotate(4deg);
-}
-
-.sybau-4 {
-  right: 25%;
-  top: 69%;
-  animation-delay: 3.4s;
-  transform: rotate(-4deg);
+.word-right {
+  right: clamp(4%, 10vw, 14%);
+  top: 47%;
+  transform: rotate(3deg);
 }
 
 .sparkles i {
   position: absolute;
-  z-index: 4;
-  color: #ff9eb4;
+  color: #ff9bad;
   font-style: normal;
-  opacity: .6;
-  animation: twinkle 3.1s ease-in-out infinite;
+  opacity: .65;
+  animation: twinkle 2.8s ease-in-out infinite;
 }
 
-.sparkles i:nth-child(1) { left: 17%; top: 24%; }
-.sparkles i:nth-child(2) { left: 29%; top: 18%; animation-delay: .7s; }
-.sparkles i:nth-child(3) { right: 24%; top: 21%; animation-delay: 1.2s; }
-.sparkles i:nth-child(4) { right: 12%; top: 38%; animation-delay: 1.7s; }
-.sparkles i:nth-child(5) { left: 11%; top: 49%; animation-delay: 2.1s; }
-.sparkles i:nth-child(6) { right: 33%; top: 57%; animation-delay: 1s; }
-.sparkles i:nth-child(7) { left: 35%; top: 73%; animation-delay: 2.5s; }
+.sparkles i:nth-child(1) { left: 20%; top: 25%; }
+.sparkles i:nth-child(2) { left: 31%; top: 18%; animation-delay: .5s; }
+.sparkles i:nth-child(3) { right: 25%; top: 24%; animation-delay: 1s; }
+.sparkles i:nth-child(4) { right: 15%; top: 35%; animation-delay: 1.5s; }
+.sparkles i:nth-child(5) { left: 14%; top: 55%; animation-delay: .9s; }
+.sparkles i:nth-child(6) { right: 31%; top: 63%; animation-delay: 1.9s; }
 
-.scroll-hint {
+.memory {
+  min-height: 28vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem 2rem;
+}
+
+.memory-line {
+  width: min(280px, 55vw);
+  height: 1px;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(90deg, transparent, rgba(255,145,169,.4), transparent);
+}
+
+.couple {
+  width: min(650px, 92vw);
+  max-height: 34vh;
+  object-fit: cover;
+  object-position: center top;
+  image-rendering: pixelated;
+  border: 1px solid rgba(255, 145, 169, .22);
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 6px rgba(255, 145, 169, .025),
+    0 0 40px rgba(28, 13, 39, .7),
+    0 0 70px rgba(255, 91, 142, .08);
+}
+
+.tiny {
+  margin: .7rem 0 0;
+  color: rgba(255,145,169,.7);
+  font-size: .8rem;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(.94); opacity: .55; }
+  50% { transform: scale(1.05); opacity: .9; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .25; transform: scale(.8); }
+  50% { opacity: .9; transform: scale(1.15); }
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 70vh; padding-top: 5rem; }
+  .word-left { left: 7%; top: 31%; }
+  .word-right { right: 5%; top: 58%; }
+  .lotus-wrap { width: 92vw; }
+  .memory { min-height: 30vh; }
+  .couple { width: 96vw; }
+}
+
+
+/* The little hidden "sybau" moments */
+.sybau {
   position: absolute;
-  z-index: 7;
-  bottom: 1.4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255, 210, 190, .55);
-  font-size: .58rem;
+  z-index: 4;
+  color: #ff9db2;
+  font-size: clamp(.65rem, 1.7vw, .9rem);
   letter-spacing: .08em;
   opacity: 0;
-  animation: hint-in 2s 3s forwards, hint-float 2.5s 5s ease-in-out infinite;
+  text-shadow:
+    0 0 5px rgba(255, 120, 150, .35),
+    0 0 18px rgba(255, 70, 130, .28);
+  pointer-events: none;
+  animation: sybau-flicker 9s infinite;
 }
 
-@keyframes message-breathe {
-  0%, 100% {
-    opacity: .82;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-2px);
-  }
+.sybau-1 {
+  left: 22%;
+  top: 20%;
+  animation-delay: 1.5s;
+}
+
+.sybau-2 {
+  right: 18%;
+  top: 32%;
+  animation-delay: 5s;
+}
+
+.sybau-3 {
+  left: 40%;
+  top: 66%;
+  animation-delay: 8s;
 }
 
 @keyframes sybau-flicker {
   0%, 61%, 100% {
     opacity: 0;
     filter: blur(1px);
+    transform: translateY(3px) scale(.96);
   }
-  64% { opacity: .08; }
-  66% { opacity: .95; filter: blur(0); }
-  69% { opacity: .4; }
-  72% { opacity: .9; }
-  76% { opacity: .12; }
-  79% { opacity: .75; }
-  83% { opacity: 0; filter: blur(1px); }
-}
 
-@keyframes twinkle {
-  0%, 100% { opacity: .18; transform: scale(.8); }
-  50% { opacity: .9; transform: scale(1.15); }
-}
+  64% {
+    opacity: .05;
+  }
 
-@keyframes hint-in {
-  to { opacity: 1; }
-}
+  66% {
+    opacity: .95;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
 
-@keyframes hint-float {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -5px); }
+  70% {
+    opacity: .45;
+  }
+
+  73% {
+    opacity: .9;
+  }
+
+  77% {
+    opacity: .12;
+  }
+
+  80% {
+    opacity: .75;
+  }
+
+  84% {
+    opacity: 0;
+    filter: blur(1px);
+    transform: translateY(-2px) scale(1.02);
+  }
 }
 
 @media (max-width: 600px) {
-  .scene {
-    min-height: 100svh;
-    height: 100svh;
-    background-position: center center;
-  }
-
-  .scene-shade {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(4, 3, 15, .12),
-        rgba(8, 5, 20, .03) 45%,
-        rgba(5, 3, 16, .26)
-      );
-  }
-
-  .message {
-    top: 30%;
-    font-size: .66rem;
-  }
-
-  .message-left {
-    left: 7%;
-  }
-
-  .message-right {
-    right: 5%;
-  }
-
-  .sybau-1 { left: 38%; top: 13%; }
-  .sybau-2 { right: 7%; top: 25%; }
-  .sybau-3 { left: 10%; top: 59%; }
-  .sybau-4 { right: 17%; top: 73%; }
-
-  .scroll-hint {
-    font-size: .52rem;
-  }
+  .sybau-1 { left: 12%; top: 20%; }
+  .sybau-2 { right: 9%; top: 34%; }
+  .sybau-3 { left: 39%; top: 67%; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .001ms !important;
-    animation-iteration-count: 1 !important;
+
+/* Quiet night-sky atmosphere */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .55;
+  background-image:
+    radial-gradient(circle at 13% 18%, rgba(255, 174, 192, .6) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 82% 16%, rgba(255, 174, 192, .45) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 72% 58%, rgba(255, 174, 192, .3) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 25% 62%, rgba(255, 174, 192, .35) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 91% 72%, rgba(255, 174, 192, .28) 0 1px, transparent 1.5px);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  width: min(720px, 92vw);
+  height: 80px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(183, 76, 119, .12), transparent 68%);
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 73vh;
+    padding-top: 4rem;
+  }
+
+  .lotus-wrap {
+    width: 96vw;
+  }
+
+  .word-left {
+    left: 4%;
+    top: 30%;
+  }
+
+  .word-right {
+    right: 3%;
+    top: 58%;
+  }
+
+  .couple {
+    width: 96vw;
+    max-height: 30vh;
   }
 }
