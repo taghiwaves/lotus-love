@@ -21,24 +21,48 @@ const stories = [
   }
 ];
 
-const modal=document.getElementById("storyModal");
-const image=document.getElementById("storyImage");
-const number=document.getElementById("storyNumber");
-const title=document.getElementById("storyTitle");
-const text=document.getElementById("storyText");
+const page = document.getElementById("page");
+const modal = document.getElementById("storyModal");
+const image = document.getElementById("storyImage");
+const number = document.getElementById("storyNumber");
+const title = document.getElementById("storyTitle");
+const text = document.getElementById("storyText");
+const closeButton = modal.querySelector(".close");
 
-document.querySelectorAll(".memory").forEach(card=>{
-  card.addEventListener("click",()=>{
-    const i=Number(card.dataset.story), story=stories[i];
-    image.src=card.querySelector("img").src;
-    number.textContent=`MEMORY ${String(i+1).padStart(2,"0")}`;
-    title.textContent=story.title;
-    text.textContent=story.text;
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden","false");
-    document.body.style.overflow="hidden";
-  });
+let lastFocused = null;
+
+function openModal(card) {
+  const i = Number(card.dataset.story);
+  const story = stories[i];
+  if (!story) return;
+
+  lastFocused = card;
+  image.src = card.querySelector("img").src;
+  image.alt = story.title;
+  number.textContent = `MEMORY ${String(i + 1).padStart(2, "0")}`;
+  title.textContent = story.title;
+  text.textContent = story.text;
+
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  page.inert = true; // keeps keyboard focus and screen readers inside the dialog
+  document.body.style.overflow = "hidden";
+  closeButton.focus();
+}
+
+function closeModal() {
+  if (!modal.classList.contains("open")) return;
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  page.inert = false;
+  document.body.style.overflow = "";
+  if (lastFocused) lastFocused.focus();
+}
+
+document.querySelectorAll(".memory").forEach(card => {
+  card.addEventListener("click", () => openModal(card));
 });
-document.querySelectorAll("[data-close]").forEach(el=>el.addEventListener("click",closeModal));
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
-function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+document.querySelectorAll("[data-close]").forEach(el => el.addEventListener("click", closeModal));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});

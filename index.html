@@ -2,52 +2,53 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#080711">
-  <title>love u ♡</title>
+  <title>there for you ♡</title>
+  <meta name="description" content="a little place for us ♡">
+  <meta property="og:title" content="there for you ♡">
+  <meta property="og:description" content="a little place for us ♡">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/memory-1.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A9%B7%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="page">
+<main class="page" id="page">
   <header class="intro">
     <p class="eyebrow">a little place for us</p>
-    <h1>love u <span>♡</span></h1>
+    <h1>there for you <span aria-hidden="true">♡</span></h1>
     <p class="sub">click a memory</p>
   </header>
 
   <section class="memories" aria-label="Unsere Erinnerungen">
-<button class="memory memory-1" data-story="0"><img src="assets/memory-5.png" alt="Pixelart-Erinnerung"><span>♡</span></button>
-<button class="memory memory-2" data-story="1"><img src="assets/memory-1.png" alt="Pixelart-Erinnerung"><span>✦</span></button>
-<button class="memory memory-3" data-story="2"><img src="assets/memory-2.png" alt="Pixelart-Erinnerung"><span>♡</span></button>
-<button class="memory memory-4" data-story="3"><img src="assets/memory-3.png" alt="Pixelart-Erinnerung"><span>✦</span></button>
-<button class="memory memory-5" data-story="4"><img src="assets/memory-4.png" alt="Pixelart-Erinnerung"><span>♡</span></button>
-    
-    
-    
-    
-    
+    <button type="button" class="memory memory-1" data-story="0" aria-label="Erinnerung 1 öffnen"><img src="assets/memory-5.png" alt="" decoding="async"><span aria-hidden="true">♡</span></button>
+    <button type="button" class="memory memory-2" data-story="1" aria-label="Erinnerung 2 öffnen"><img src="assets/memory-1.png" alt="" decoding="async"><span aria-hidden="true">✦</span></button>
+    <button type="button" class="memory memory-3" data-story="2" aria-label="Erinnerung 3 öffnen"><img src="assets/memory-2.png" alt="" decoding="async"><span aria-hidden="true">♡</span></button>
+    <button type="button" class="memory memory-4" data-story="3" aria-label="Erinnerung 4 öffnen"><img src="assets/memory-3.png" alt="" decoding="async" loading="lazy"><span aria-hidden="true">✦</span></button>
+    <button type="button" class="memory memory-5" data-story="4" aria-label="Erinnerung 5 öffnen"><img src="assets/memory-4.png" alt="" decoding="async" loading="lazy"><span aria-hidden="true">♡</span></button>
   </section>
 
-  <div class="sybau sybau-1">sybau</div>
-  <div class="sybau sybau-2">sybau</div>
-  <div class="sybau sybau-3">sybau</div>
+  <div class="sybau sybau-1" aria-hidden="true">sybau</div>
+  <div class="sybau sybau-2" aria-hidden="true">sybau</div>
+  <div class="sybau sybau-3" aria-hidden="true">sybau</div>
 
-  <footer>there for you <span>♡</span></footer>
+  <footer>there for you <span aria-hidden="true">♡</span></footer>
 </main>
 
 <div class="story-modal" id="storyModal" aria-hidden="true">
   <div class="story-backdrop" data-close></div>
-  <article class="story-card" role="dialog" aria-modal="true">
-    <button class="close" data-close aria-label="Schließen">×</button>
-    <img id="storyImage" src="" alt="">
+  <article class="story-card" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+    <button type="button" class="close" data-close aria-label="Schließen">×</button>
+    <img id="storyImage" alt="">
     <div class="story-copy">
       <span class="story-number" id="storyNumber"></span>
       <h2 id="storyTitle"></h2>
       <p id="storyText"></p>
-      <span class="story-heart">♡</span>
+      <span class="story-heart" aria-hidden="true">♡</span>
     </div>
   </article>
 </div>

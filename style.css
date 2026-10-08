@@ -3,8 +3,10 @@
 html,body { margin:0; min-height:100%; background:var(--bg); }
 body { color:var(--soft); font-family:"Silkscreen",monospace; overflow-x:hidden; }
 button { font:inherit; }
+:focus-visible { outline:2px solid var(--pink); outline-offset:4px; }
+
 .page {
-  min-height:100vh; position:relative; overflow:hidden; padding:7vh 5vw 8vh;
+  min-height:100vh; min-height:100dvh; position:relative; overflow:hidden; padding:7vh 5vw 8vh;
   background:
     radial-gradient(circle at 50% 30%,rgba(100,48,96,.16),transparent 34rem),
     linear-gradient(180deg,#080711 0%,#0a0815 65%,#07060d 100%);
@@ -23,20 +25,31 @@ h1 { margin:0; color:var(--pink); font-size:clamp(1.35rem,4vw,2.4rem); font-weig
 h1 span { font-size:.75em; }
 .sub { margin:1rem 0 0; color:rgba(255,213,220,.55); font-size:.62rem; }
 
-.memories { position:relative; z-index:2; width:min(930px,94vw); min-height:64vh; margin:0 auto; }
+/* Desktop collage. min-height is large enough that the lowest cards
+   never run into the footer. */
+.memories { position:relative; z-index:2; width:min(930px,94vw); min-height:max(64vh,760px); margin:0 auto; }
 .memory {
   position:absolute; padding:7px; border:1px solid rgba(255,145,169,.18);
   background:rgba(15,13,25,.76); box-shadow:0 16px 45px rgba(0,0,0,.35),0 0 35px rgba(255,91,142,.04);
-  cursor:pointer; transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+  cursor:pointer; color:inherit;
+  transition:translate .35s ease,scale .35s ease,box-shadow .35s ease,border-color .35s ease;
+  animation:card-in .9s ease backwards;
 }
-.memory:hover { transform:translateY(-8px) scale(1.025); border-color:rgba(255,145,169,.45); box-shadow:0 22px 55px rgba(0,0,0,.45),0 0 35px rgba(255,91,142,.12); }
+/* Rotation uses the separate `rotate` property, so hover (translate + scale)
+   no longer wipes out the tilt. */
+@media (hover:hover) {
+  .memory:hover { translate:0 -8px; scale:1.025; border-color:rgba(255,145,169,.45); box-shadow:0 22px 55px rgba(0,0,0,.45),0 0 35px rgba(255,91,142,.12); }
+}
+.memory:focus-visible { translate:0 -8px; scale:1.025; border-color:rgba(255,145,169,.6); }
 .memory img { display:block; width:100%; height:100%; object-fit:cover; image-rendering:auto; }
 .memory > span { position:absolute; right:-8px; top:-12px; color:var(--pink); font-size:.85rem; text-shadow:0 0 10px rgba(255,111,150,.55); }
-.memory-1 { width:230px;height:300px;left:3%;top:5%;transform:rotate(-4deg); }
-.memory-2 { width:300px;height:340px;left:33%;top:1%;transform:rotate(2deg); }
-.memory-3 { width:245px;height:315px;right:3%;top:13%;transform:rotate(4deg); }
-.memory-4 { width:270px;height:340px;left:35%;top:53%;transform:rotate(-2deg); }
-.memory-5 { width:290px;height:210px;right:8%;top:61%;transform:rotate(3deg); }
+.memory-1 { width:230px;height:300px;left:3%;top:5%;rotate:-4deg; animation-delay:.1s; }
+.memory-2 { width:300px;height:340px;left:33%;top:1%;rotate:2deg; animation-delay:.3s; }
+.memory-3 { width:245px;height:315px;right:3%;top:13%;rotate:4deg; animation-delay:.5s; }
+.memory-4 { width:270px;height:340px;left:35%;top:53%;rotate:-2deg; animation-delay:.7s; }
+.memory-5 { width:290px;height:210px;right:8%;top:61%;rotate:3deg; animation-delay:.9s; }
+
+@keyframes card-in { from { opacity:0; translate:0 16px; } }
 
 .sybau { position:fixed; z-index:4; color:var(--pink); font-size:.62rem; letter-spacing:.08em; opacity:0; pointer-events:none;
   text-shadow:0 0 6px rgba(255,120,150,.4),0 0 18px rgba(255,70,130,.25); animation:flicker 11s infinite; }
@@ -50,7 +63,7 @@ footer span { margin-left:.4rem; }
 .story-modal.open { opacity:1;visibility:visible; }
 .story-backdrop { position:absolute;inset:0;background:rgba(2,2,8,.84);backdrop-filter:blur(8px); }
 .story-card {
-  position:relative;z-index:1;width:min(860px,94vw);max-height:90vh;overflow:auto;display:grid;
+  position:relative;z-index:1;width:min(860px,94vw);max-height:90vh;max-height:90dvh;overflow:auto;display:grid;
   grid-template-columns:minmax(240px,1fr) minmax(240px,.85fr);background:#0d0b17;
   border:1px solid rgba(255,145,169,.22);box-shadow:0 30px 100px rgba(0,0,0,.65),0 0 55px rgba(255,91,142,.07);
   transform:translateY(18px) scale(.97);transition:transform .35s ease;
@@ -62,18 +75,21 @@ footer span { margin-left:.4rem; }
 .story-copy h2 { margin:1rem 0 1.25rem;color:var(--pink);font-size:clamp(1rem,2vw,1.35rem);font-weight:400;line-height:1.7; }
 .story-copy p { margin:0;color:rgba(255,213,220,.72);font-family:system-ui,sans-serif;font-size:.95rem;line-height:1.9; }
 .story-heart { margin-top:2rem;color:var(--pink);font-size:1.1rem; }
-.close { position:absolute;z-index:3;top:.65rem;right:.8rem;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(5,4,10,.72);color:#fff;width:2.5rem;height:2.5rem;cursor:pointer;font-size:1.5rem;line-height:1;display:grid;place-items:center;-webkit-tap-highlight-color:transparent; }
-.close:active { transform:scale(.94); }
+.close { position:absolute;z-index:3;top:.65rem;right:.8rem;border:0;background:rgba(5,4,10,.55);color:#fff;width:2.6rem;height:2.6rem;cursor:pointer;font-size:1.5rem;line-height:1; }
 
-@media(max-width:700px) {
+/* Single-column collage starts earlier (860px) so the cards don't pile up
+   on tablets. Positions are in px so the last card stays inside the container. */
+@media(max-width:860px) {
   .page{padding:5vh 3vw 7vh}.intro{margin-bottom:3vh}.memories{min-height:1240px;width:96vw}
-  .memory-1{width:43vw;height:250px;left:2%;top:1%}.memory-2{width:55vw;height:300px;left:23%;top:24%}
-  .memory-3{width:44vw;height:250px;right:2%;top:55%}.memory-4{width:52vw;height:285px;left:7%;top:76%}
-  .memory-5{width:58vw;height:205px;right:4%;top:96%}
-  .story-card{grid-template-columns:1fr;max-height:92vh}.story-card>img{height:48vh;min-height:260px;max-height:480px}
+  .memory-1{width:43vw;height:250px;left:2%;top:0}
+  .memory-2{width:55vw;height:300px;left:23%;top:230px}
+  .memory-3{width:44vw;height:250px;right:2%;top:500px}
+  .memory-4{width:52vw;height:285px;left:7%;top:740px}
+  .memory-5{width:58vw;height:205px;right:4%;top:1000px}
+  .story-card{grid-template-columns:1fr;max-height:92vh;max-height:92dvh}
+  .story-card>img{height:48vh;height:48dvh;min-height:260px;max-height:480px}
   .story-copy{padding:1.4rem 1.5rem 1.7rem}.story-copy p{font-size:.86rem}
 }
-
 
 /* Enhanced ambient glow — preserves the original design */
 .sybau {
@@ -90,4 +106,9 @@ footer span { margin-left:.4rem; }
     0 0 18px rgba(220,205,255,0.82),
     0 0 34px rgba(180,150,255,0.52),
     0 0 55px rgba(150,120,255,0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation:none !important; transition:none !important; }
+  .sybau { opacity:.3; }
 }
