@@ -1,23 +1,23 @@
 const stories = [
   {
-    title: "Ein kleiner süßer Moment",
-    text: "Manchmal sind es genau die kleinen Dinge, die man später am liebsten wieder hervorholt. Dein Lächeln, dieser Lebkuchen und dieser ganz normale Moment — und trotzdem ist er für mich etwas Besonderes. Ich mag diese kleinen Erinnerungen an uns, weil sie sich nach Zuhause anfühlen."
+    title: "Sadəcə ikimiz",
+    text: "Bəzi şəkillərin heç bir sözə ehtiyacı yoxdur. Sadəcə ikimiz, birlikdə, insanın məhz orada olmaq istədiyini hiss etdiyi o sakit duyğu ilə. Belə anları düşünəndə, səni yanımda görməyin nə qədər gözəl olduğunu bir daha anlayıram."
   },
   {
-    title: "Einfach wir",
-    text: "Ich liebe dieses Bild, weil man darauf nichts beweisen muss. Wir sitzen einfach zusammen, schauen uns an und genießen den Moment. Kein großes Ereignis, kein perfekter Plan — nur du und ich. Und ehrlich gesagt brauche ich manchmal gar nicht mehr."
+    title: "Bu baxışlar",
+    text: "I love this picture because there is no need to prove anything. Our eyes say everything, and you can see how beautiful that moment was. Even though you were already preparing to go far away in this picture, that never stood in the way of my love for you."
   },
   {
-    title: "Dieses Lächeln",
-    text: "Ein Foto, das mich sofort zum Lächeln bringt. Vielleicht gerade deshalb, weil man darauf sieht, wie leicht ein Moment mit dir sein kann. Wir zwei, ein bisschen Sonne, ein bisschen Chaos und dieses Gefühl, dass genau dort gerade alles richtig ist."
+    title: "Bu təbəssüm",
+    text: "A photo that makes me smile instantly. Maybe because it shows just how easy and effortless a moment with you can be. A little before this picture, we had an arm-wrestling match. I may have beaten you at arm wrestling, but in love, I will always lose to you."
   },
   {
-    title: "Ein ganz normaler Tag",
-    text: "Und vielleicht ist genau das mein Lieblingsgedanke: dass nicht jeder schöne Moment etwas Großes sein muss. Du auf einer Bank, ein ruhiger Nachmittag, Essen in der Hand und einfach dein eigenes kleines Universum. Ich möchte noch ganz viele solcher ganz normalen Tage mit dir erleben."
+    title: "Adi bir gün",
+    text: "And maybe this is my favorite thought of all: not every beautiful moment has to be something big. You sitting on a bench, a quiet afternoon, food in your hands, and simply us. I promised I would come to Korea. I couldn't make it, and the reason isn't a breakup or the distance, like you might have thought."
   },
   {
-    title: "Ein Abend nur für uns",
-    text: "Manche Bilder brauchen gar nicht viele Worte. Einfach wir beide, zusammen, mit diesem ruhigen Gefühl, dass man gerade genau dort sein möchte. Wenn ich an solche Momente denke, denke ich daran, wie schön es ist, dich an meiner Seite zu haben."
+    title: "Ən sevdiyim şəklimiz",
+    text: "My favorite picture of us. It is enough to bring tears to my eyes. I am still shocked by how perfectly we look together. If I were born again, I would still want to be with you. No one in this world looks as perfect together as we do."
   }
 ];
 
