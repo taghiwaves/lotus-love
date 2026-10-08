@@ -153,3 +153,83 @@ body {
   .memory { min-height: 30vh; }
   .couple { width: 96vw; }
 }
+
+
+/* The little hidden "sybau" moments */
+.sybau {
+  position: absolute;
+  z-index: 4;
+  color: #ff9db2;
+  font-size: clamp(.65rem, 1.7vw, .9rem);
+  letter-spacing: .08em;
+  opacity: 0;
+  text-shadow:
+    0 0 5px rgba(255, 120, 150, .35),
+    0 0 18px rgba(255, 70, 130, .28);
+  pointer-events: none;
+  animation: sybau-flicker 9s infinite;
+}
+
+.sybau-1 {
+  left: 22%;
+  top: 20%;
+  animation-delay: 1.5s;
+}
+
+.sybau-2 {
+  right: 18%;
+  top: 32%;
+  animation-delay: 5s;
+}
+
+.sybau-3 {
+  left: 40%;
+  top: 66%;
+  animation-delay: 8s;
+}
+
+@keyframes sybau-flicker {
+  0%, 61%, 100% {
+    opacity: 0;
+    filter: blur(1px);
+    transform: translateY(3px) scale(.96);
+  }
+
+  64% {
+    opacity: .05;
+  }
+
+  66% {
+    opacity: .95;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+
+  70% {
+    opacity: .45;
+  }
+
+  73% {
+    opacity: .9;
+  }
+
+  77% {
+    opacity: .12;
+  }
+
+  80% {
+    opacity: .75;
+  }
+
+  84% {
+    opacity: 0;
+    filter: blur(1px);
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+@media (max-width: 600px) {
+  .sybau-1 { left: 12%; top: 20%; }
+  .sybau-2 { right: 9%; top: 34%; }
+  .sybau-3 { left: 39%; top: 67%; }
+}
