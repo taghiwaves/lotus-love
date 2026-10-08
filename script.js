@@ -1,7 +1,7 @@
 const stories = [
   {
     title: "Sadəcə ikimiz",
-    text: "Bəzi şəkillərin heç bir sözə ehtiyacı yoxdur. Sadəcə ikimiz, birlikdə, insanın məhz orada olmaq istədiyini hiss etdiyi o sakit duyğu ilə. Belə anları düşünəndə, səni yanımda görməyin nə qədər gözəl olduğunu bir daha anlayıram."
+    text: "Some pictures need no words. Just the two of us, together, sharing that serene feeling of being exactly where one wants to be. When I think of moments like these, I realize once again how wonderful it is to have you by my side.."
   },
   {
     title: "Bu baxışlar",
