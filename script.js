@@ -4,6 +4,10 @@ const stories = [
     text: "My favorite picture of us. It is enough to bring tears to my eyes. I am still shocked by how perfectly we look together. If I were born again, I would still want to be with you. No one in this world looks as perfect together as we do."
   },
   {
+    title: "Sweatheart",
+    text: "Sometimes, it’s the small, unassuming moments that stay with me the longest. This picture makes me smile every time because you look just so sweet in it. It might be just a small moment, but for me, it’s one of the many little things that make you so special."
+  },
+  {
     title: "These looks",
     text: "I love this picture because there is no need to prove anything. Our eyes say everything, and you can see how beautiful that moment was. Even though you were already preparing to go far away in this picture, that never stood in the way of my love for you."
   },
@@ -14,10 +18,6 @@ const stories = [
   {
     title: "An ordinary day",
     text: "And maybe this is my favorite thought of all: not every beautiful moment has to be something big. You sitting on a bench, a quiet afternoon, food in your hands, and simply us. I promised I would come to Korea. I couldn't make it, and the reason isn't a breakup or the distance, like you might have thought."
-  },
-  {
-    title: "Just the two of us",
-    text: "Some pictures need no words. Just the two of us, together, sharing that serene feeling of being exactly where one wants to be. When I think of moments like these, I realize once again how wonderful it is to have you by my side."
   }
 ];
 
